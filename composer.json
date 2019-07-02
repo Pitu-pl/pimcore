@@ -75,25 +75,44 @@
     "presta/sitemap-bundle": "^1.5",
     "ramsey/uuid": "^3.8",
     "sabre/dav": "^3.2",
-    "sensio/framework-extra-bundle": "^5.2",
+    "sensio/framework-extra-bundle": "^5.3",
     "sensiolabs/ansi-to-html": "^1.1",
     "symfony-cmf/routing-bundle": "^2.0",
-    "symfony/monolog-bundle": "^3.1.0",
-    "symfony/swiftmailer-bundle": "^3.2.2",
-    "symfony/symfony": "^3.4.17 || ^4.0",
+    "symfony/flex": "^1.0",
     "tijsverkoyen/css-to-inline-styles": "^2.2.1",
-    "twig/extensions": "^1.5",
-    "twig/twig": "^2.4",
     "umpirsky/country-list": "^2.0.4",
     "vrana/adminer": "^4.6.3",
     "vrana/jush": "~2.0.2",
     "zendframework/zend-paginator": "^2.7",
     "zendframework/zend-servicemanager": "^3.2",
-    "scheb/two-factor-bundle": "^3.8"
+    "scheb/two-factor-bundle": "^3.8",
+    "symfony/asset": "^3.4 || ^4.3",
+    "symfony/orm-pack": "^1.0",
+    "symfony/serializer-pack": "^1.0",
+    "symfony/templating": "^3.4 || ^4.3",
+    "symfony/twig-bundle": "^3.4 || ^4.3",
+    "symfony/monolog-bundle": "^3.4",
+    "symfony/swiftmailer-bundle": "^3.2",
+    "symfony/form": "^3.4 || ^4.3",
+    "symfony/security-bundle": "^3.4 || ^4.3",
+    "symfony/translation": "^3.4 || ^4.3",
+    "symfony/validator": "^3.4 || ^4.3",
+    "symfony/web-profiler-bundle": "^3.4 || ^4.3",
+    "symfony/web-link": "^3.4 || ^4.3",
+    "symfony/debug-bundle": "^3.4 || ^4.3",
+    "symfony/workflow": "^3.4 || ^4.3",
+    "symfony/expression-language": "^3.4 || ^4.3"
   },
   "require-dev": {
     "cache/integration-tests": "^0.16.0",
-    "codeception/codeception": "~2.4.5"
+    "codeception/codeception": "~2.4.5",
+    "symfony/dotenv": "^3.4 || ^4.3",
+    "symfony/maker-bundle": "^1.11",
+    "doctrine/doctrine-fixtures-bundle": "^3.2",
+    "symfony/profiler-pack": "^1.0"
+  },
+  "conflict": {
+    "symfony/symfony": "*"
   },
   "suggest": {
     "ext-curl": "*",
@@ -123,10 +142,7 @@
   "autoload-dev": {
     "psr-4": {
       "Pimcore\\Tests\\": "tests"
-    },
-    "files": [
-      "app/AppKernel.php"
-    ]
+    }
   },
   "extra": {
     "branch-alias": {

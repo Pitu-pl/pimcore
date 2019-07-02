@@ -10,7 +10,7 @@ Below is the configuration for a Nginx server (just the server part, the http et
 
 Assumptions - change them to match your environment/distro:
 
-- Pimcore was installed into: `/var/www/pimcore`; therefore, the Document-Root is: `/var/www/pimcore/web`
+- Pimcore was installed into: `/var/www/pimcore`; therefore, the Document-Root is: `/var/www/pimcore/public`
 - Logfiles are written to the default location `/var/log/nginx`. If you prefer to have the logs together with the Pimcore Logs: these are in `/var/www/pimcore/var/logs`.
 - PHP-FPM is configured to listen on the Socket `/var/run/php/pimcore5.sock`. If your setup differs, change the `server` directive within the `upstream` block accordingly.
 - Before you change the order of location blocks, read [Understanding Nginx Server and Location Block Selection Algorithms](https://www.digitalocean.com/community/tutorials/understanding-nginx-server-and-location-block-selection-algorithms)
@@ -29,7 +29,7 @@ upstream php-pimcore5 {
 server {
     listen 80;
     server_name pimcore.loc;
-    root /var/www/pimcore/web;
+    root /var/www/pimcore/public;
     index index.php;
 
     access_log  /var/log/access.log;
@@ -52,7 +52,7 @@ server {
     #
     ### 2. Option - Checking permissions before delivery
     #
-    # rewrite ^(/protected/.*) /app.php$is_args$args last;
+    # rewrite ^(/protected/.*) /index.php$is_args$args last;
     #
     # location ~ ^/var/.*/protected(.*) {
     #   return 403;
@@ -88,12 +88,12 @@ server {
     # Some Admin Modules need this:
     # Database Admin, Server Info
     location ~* ^/admin/(adminer|external) {
-        rewrite .* /app.php$is_args$args last;
+        rewrite .* /index.php$is_args$args last;
     }
     
     # Thumbnails
     location ~* .*/(image|video)-thumb__\d+__.* {
-        try_files /var/tmp/$1-thumbnails$uri /app.php;
+        try_files /var/tmp/$1-thumbnails$uri /index.php;
         expires 2w;
         access_log off;
         add_header Cache-Control "public";
@@ -111,14 +111,14 @@ server {
 
     location / {
         error_page 404 /meta/404;
-        try_files $uri /app.php$is_args$args;
+        try_files $uri /index.php$is_args$args;
     }
 
     # Use this location when the installer has to be run
-    # location ~ /(app|install)\.php(/|$) {
+    # location ~ /(index|install)\.php(/|$) {
     #
     # Use this after initial install is done:
-    location ~ ^/app\.php(/|$) {
+    location ~ ^/index\.php(/|$) {
         send_timeout 1800;
         fastcgi_read_timeout 1800;
         # regex to split $uri to $fastcgi_script_name and $fastcgi_path
@@ -138,7 +138,7 @@ server {
 
         fastcgi_pass php-pimcore5;
         # Prevents URIs that include the front controller. This will 404:
-        # http://domain.tld/app.php/some-path
+        # http://domain.tld/index.php/some-path
         # Remove the internal directive to allow URIs like this
         internal;
     }
@@ -198,7 +198,7 @@ __Step 2: Replace the location that handles on-demand thumbnail generation__
     }
     location @imggen {
         limit_req zone=imggen burst=15;
-        try_files /var/tmp/$1-thumbnails$uri /app.php;
+        try_files /var/tmp/$1-thumbnails$uri /index.php;
         expires 2w;
         access_log off;
         add_header Cache-Control "public";

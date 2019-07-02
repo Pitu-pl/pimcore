@@ -49,7 +49,7 @@ Pimcore requires write access to the following directories (relative to your pro
 ([Details](../23_Installation_and_Upgrade/03_System_Setup_and_Hosting/03_File_Permissions.md))
 
 If you're running the installation using a [custom environment name](../21_Deployment/03_Multi_Environment.md), ensure you have already the right config files 
-in place, e.g. `app/config/config_[env_name].yml`. 
+in place, e.g. `config/[env_name]/config.yml`. 
 
 ## 3. Create Database
 
