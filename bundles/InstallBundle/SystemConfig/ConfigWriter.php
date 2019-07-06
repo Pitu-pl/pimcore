@@ -201,7 +201,7 @@ class ConfigWriter
             return;
         }
 
-        $parameters = file_get_contents(PIMCORE_APP_ROOT . '/config/parameters.example.yml');
+        $parameters = file_get_contents(PIMCORE_PROJECT_ROOT . '/config/parameters.example.yml');
         $parameters = str_replace('ThisTokenIsNotSoSecretChangeIt', $secret, $parameters);
 
         File::put($parametersFilePath, $parameters);

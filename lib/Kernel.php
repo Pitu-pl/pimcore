@@ -109,9 +109,9 @@ abstract class Kernel extends SymfonyKernel
             $loader->load($bundleConfig);
         }
 
-        $configRealPath = realpath($this->getRootDir() . '/config/config_' . $this->getEnvironment() . '.yml');
+        $configRealPath = realpath($this->getProjectDir() . '/config/' . $this->getEnvironment() .'/config.yml');
         if ($configRealPath === false) {
-            throw new InvalidConfigurationException('File ' . $this->getRootDir() . '/config/config_' . $this->getEnvironment() . '.yml  cannot be found.');
+            throw new InvalidConfigurationException('File ' . $this->getProjectDir() . '/config/' . $this->getEnvironment() .'/config.yml  cannot be found.');
         }
         $loader->load($configRealPath);
     }

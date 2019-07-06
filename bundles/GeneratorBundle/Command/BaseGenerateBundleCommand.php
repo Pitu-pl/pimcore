@@ -280,7 +280,7 @@ EOT
 
                 return [
                     sprintf('- Edit <comment>%s</comment>', $reflected->getFilename()),
-                    '  and add the following bundle in the <comment>AppKernel::registerBundles()</comment> method:',
+                    '  and add the following bundle in the <comment>Kernel::registerBundles()</comment> method:',
                     '',
                     sprintf('    <comment>new %s(),</comment>', $bundle->getBundleClassName()),
                     '',
@@ -288,7 +288,7 @@ EOT
             }
         } catch (\RuntimeException $e) {
             return [
-                sprintf('Bundle <comment>%s</comment> is already defined in <comment>AppKernel::registerBundles()</comment>.', $bundle->getBundleClassName()),
+                sprintf('Bundle <comment>%s</comment> is already defined in <comment>Kernel::registerBundles()</comment>.', $bundle->getBundleClassName()),
                 '',
             ];
         }

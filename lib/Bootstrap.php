@@ -177,7 +177,7 @@ class Bootstrap
         $resolveConstant('PIMCORE_COMPOSER_PATH', PIMCORE_PROJECT_ROOT . '/vendor');
         $resolveConstant('PIMCORE_COMPOSER_FILE_PATH', PIMCORE_PROJECT_ROOT);
         $resolveConstant('PIMCORE_PATH', realpath(__DIR__ . '/..'));
-        $resolveConstant('PIMCORE_APP_ROOT', PIMCORE_PROJECT_ROOT . '/app');
+        $resolveConstant('PIMCORE_APP_ROOT', PIMCORE_PROJECT_ROOT . '/app'); //todo remove it and change in code on PIMCORE_PROJECT_ROOT
         $resolveConstant('PIMCORE_WEB_ROOT', PIMCORE_PROJECT_ROOT . '/web');
         $resolveConstant('PIMCORE_PRIVATE_VAR', PIMCORE_PROJECT_ROOT . '/var');
         $resolveConstant('PIMCORE_PUBLIC_VAR', PIMCORE_WEB_ROOT . '/var');
@@ -215,7 +215,7 @@ class Bootstrap
         // configure PHP's error logging
         $resolveConstant('PIMCORE_PHP_ERROR_REPORTING', E_ALL & ~E_NOTICE & ~E_STRICT);
         $resolveConstant('PIMCORE_PHP_ERROR_LOG', PIMCORE_LOG_DIRECTORY . '/php.log');
-        $resolveConstant('PIMCORE_KERNEL_CLASS', '\AppKernel');
+        $resolveConstant('PIMCORE_KERNEL_CLASS', 'App\Kernel');
 
         $kernelDebug = $resolveConstant('PIMCORE_KERNEL_DEBUG', null, false);
         if ($kernelDebug === 'true') {
@@ -270,7 +270,7 @@ class Bootstrap
         if (defined('PIMCORE_KERNEL_CLASS')) {
             $kernelClass = PIMCORE_KERNEL_CLASS;
         } else {
-            $kernelClass = '\AppKernel';
+            $kernelClass = 'App\Kernel';
         }
 
         if (!class_exists($kernelClass)) {

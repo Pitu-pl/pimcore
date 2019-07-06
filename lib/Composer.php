@@ -121,8 +121,8 @@ class Composer
     public static function parametersYmlCheck($rootPath)
     {
         // ensure that there's a parameters.yml, if not we'll create a temporary one, so that the requirement check works
-        $parametersYml = $rootPath . '/app/config/parameters.yml';
-        $parametersYmlExample = $rootPath . '/app/config/parameters.example.yml';
+        $parametersYml = $rootPath . '/config/parameters.yml';
+        $parametersYmlExample = $rootPath . '/config/parameters.example.yml';
         if (!file_exists($parametersYml) && file_exists($parametersYmlExample)) {
             $secret = base64_encode(random_bytes(24));
             $parameters = file_get_contents($parametersYmlExample);

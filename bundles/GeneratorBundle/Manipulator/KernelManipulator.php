@@ -42,7 +42,7 @@ class KernelManipulator extends Manipulator
 
         // Don't add same bundle twice
         if (false !== strpos(implode('', $lines), $bundle)) {
-            throw new \RuntimeException(sprintf('Bundle "%s" is already defined in "AppKernel::registerBundles()".', $bundle));
+            throw new \RuntimeException(sprintf('Bundle "%s" is already defined in "Kernel::registerBundles()".', $bundle));
         }
 
         $this->setCode(token_get_all('<?php '.implode('', $lines)), $method->getStartLine());

@@ -6,7 +6,7 @@ to the Pimcore 4 compatibility bridge or the Symfony Stack.
 - **Backup your system!**
 
 - Replace your `composer.json` with [this one](https://github.com/pimcore/skeleton/blob/master/composer.json) and re-add your custom dependencies. 
-- Add `/app/AppKernel.php` from [here](https://github.com/pimcore/skeleton/blob/master/app/AppKernel.php)
+- Add `/src/Kernel.php` from [here](https://github.com/pimcore/skeleton/blob/master/app/AppKernel.php)
   
 - Run `COMPOSER_MEMORY_LIMIT=-1 composer update`
 If you encounter errors, please fix them until the command works properly.
@@ -15,7 +15,7 @@ You can use `--no-scripts` to install dependencies and then iterate through erro
 - Download the [Pimcore CLI .phar file](https://github.com/pimcore/pimcore-cli) and follow [these instructions](https://github.com/pimcore/pimcore-cli/blob/master/doc/pimcore_5_migration.md).
   
 - Refactor `constants.php` and move it to `app/constants.php`
-- Refactor `startup.php` and move content either to `AppKernel::boot()` or `AppBundle::boot()`
+- Refactor `startup.php` and move content either to `Kernel::boot()` or `AppBundle::boot()`
 
 - Update system configs in `/var/config/system.php` (this will be done automatically by Pimcore CLI)
     - `email` > `method` => if `''`, change to `null`

@@ -346,7 +346,7 @@ class Installer
         // load the kernel for the same environment as the app.php would do. the kernel booted here
         // will always be in "dev" with the exception of an environment set via env vars
         $environment = Config::getEnvironment(true, 'dev');
-        $kernel = new \AppKernel($environment, true);
+        $kernel = new \App\Kernel($environment, true);
 
         $this->clearKernelCacheDir($kernel);
 
