@@ -75,9 +75,10 @@
     "presta/sitemap-bundle": "^1.5",
     "ramsey/uuid": "^3.8",
     "sabre/dav": "^3.2",
-    "sensio/framework-extra-bundle": "^5.3",
+    "sensio/framework-extra-bundle": "^5.4",
     "sensiolabs/ansi-to-html": "^1.1",
     "symfony-cmf/routing-bundle": "^2.0",
+    "symfony/contracts": "^1.1",
     "symfony/flex": "^1.0",
     "tijsverkoyen/css-to-inline-styles": "^2.2.1",
     "umpirsky/country-list": "^2.0.4",
@@ -119,7 +120,8 @@
     "ext-imagick": "*",
     "ext-redis": "*",
     "klarna/checkout": "1.2.0",
-    "elasticsearch/elasticsearch": "2.0.0"
+    "elasticsearch/elasticsearch": "2.0.0",
+    " paypal/paypal-checkout-sdk": "^1"
   },
   "autoload": {
     "files": [
